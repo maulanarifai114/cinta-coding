@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+html,
+body,
+#root {
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+}
+
+.btn-primary {
+  color: white;
+  &:active,
+  &:focus,
+  &:hover {
+    color: white;
+  }
+}
+
+.width-login {
+  max-width: 400px;
+  width: 100%;
+}
+
+.width-panel {
+  max-width: 500px;
+  width: 100%;
+}
+
+.post-gray {
+  color: #a8a8a8;
+}

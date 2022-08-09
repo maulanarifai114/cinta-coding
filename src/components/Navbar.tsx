@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { Users } from "../models/users";
+import { IUser } from "../models/users";
 
 export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [account, setAccount] = useState<Users | null>(null);
+  const [account, setAccount] = useState<IUser | null>(null);
 
   useEffect(() => {
-    const data: Users = JSON.parse(localStorage.getItem("account") ?? "{}") ?? null;
+    const data: IUser = JSON.parse(localStorage.getItem("account") ?? "{}") ?? null;
     if (!data?.id) {
       navigate("/login");
       return;
@@ -31,7 +31,7 @@ export default function Navbar() {
 
       {account?.id && (
         <Link to={"/dashboard"} className="text-black text-decoration-none">
-          <h3 className="post-gray">Post</h3>
+          <h3 className="color-gray">Post</h3>
         </Link>
       )}
 

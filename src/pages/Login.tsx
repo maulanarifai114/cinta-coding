@@ -1,9 +1,9 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { Users } from "../models/users";
+import { IUser } from "../models/users";
 import http from "../services/http";
 
-interface Login {
+interface ILogin {
   username: string;
   password: string;
   error: string;
@@ -12,14 +12,14 @@ interface Login {
 export default function Login() {
   const navigate = useNavigate();
 
-  const { register, handleSubmit, formState, setError, clearErrors } = useForm<Login>();
-  const onSubmit: SubmitHandler<Login> = async (data) => {
+  const { register, handleSubmit, formState, setError, clearErrors } = useForm<ILogin>();
+  const onSubmit: SubmitHandler<ILogin> = async (data) => {
     if (data.username.toLowerCase() !== data.password.toLowerCase()) {
       setError("error", { message: "Password Wrong" });
       return;
     }
 
-    const users = (await http.get<Users[]>("/users")).data;
+    const users = (await http.get<IUser[]>("/users")).data;
     const account = users.find((user) => user.username.toLowerCase() === data.username.toLowerCase());
     if (!account) {
       setError("error", { message: "Account not found" });

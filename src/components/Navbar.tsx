@@ -15,7 +15,7 @@ export default function Navbar() {
       return;
     }
     setAccount(data);
-  }, [location]);
+  }, [location, navigate]);
 
   return (
     <nav className="d-flex justify-content-between py-4 mb-5">
